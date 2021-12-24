@@ -4,7 +4,7 @@ import org.gradle.api.tasks.Nested
 
 object Dependencies {
     object Arrow {
-        val core by lazy {   "io.arrow-kt:arrow-core:${Versions.arrow}"}
+        const val core = "io.arrow-kt:arrow-core:${Versions.arrow}"
     }
 
     object Kotlin {
