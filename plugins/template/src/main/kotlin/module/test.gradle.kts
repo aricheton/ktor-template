@@ -1,12 +1,5 @@
 package module
 
-import gradle.kotlin.dsl.accessors._1f1a8c581782f1af75841a8c02956a22.implementation
-import gradle.kotlin.dsl.accessors._1f1a8c581782f1af75841a8c02956a22.java
-import gradle.kotlin.dsl.accessors._1f1a8c581782f1af75841a8c02956a22.testing
-import org.gradle.kotlin.dsl.`jvm-test-suite`
-import org.gradle.kotlin.dsl.dependencies
-import org.gradle.kotlin.dsl.kotlin
-
 plugins {
     `jvm-test-suite`
     kotlin("jvm")
@@ -21,6 +14,17 @@ object Regex {
     val IT = setOf("**/*IT*")
 }
 
+/**
+ *  Split Unit and Integration testing within 2 separated tasks.
+ *  Task dependency should be:
+ *  ---> test (run UT) ---> UT (task alias, do nothing) ---> IT (run IT) ---> check -->
+ *
+ *  Directory:
+ *  - UT/IT: src/test/kotlin
+ *  Regex:
+ *  - UT: *UT*, *Test*
+ *  - IT: *IT*
+ **/
 @Suppress("UnstableApiUsage")
 testing {
     suites {
@@ -61,8 +65,6 @@ testing {
     }
 }
 
-
-// Task dependency : test -> UT (empty/alias) -> IT -> check
 tasks.named("check") {
     dependsOn += testing.suites.named("IT")
 }
