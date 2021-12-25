@@ -41,6 +41,10 @@ testing {
                     testTask.configure {
                         include(Regex.UT)
                         exclude(Regex.IT)
+                        systemProperty("junit.jupiter.testinstance.lifecycle.default", "per_class")
+                        systemProperty("junit.jupiter.execution.parallel.enabled", "true")
+                        systemProperty("junit.jupiter.execution.parallel.mode.default", "concurrent")
+                        systemProperty("junit.jupiter.execution.parallel.mode.classes.default", "same_thread")
                     }
                 }
             }
@@ -57,6 +61,10 @@ testing {
                     testTask.configure {
                         include(Regex.IT)
                         exclude(Regex.UT)
+                        systemProperty("junit.jupiter.testinstance.lifecycle.default", "per_class")
+                        systemProperty("junit.jupiter.execution.parallel.enabled", "true")
+                        systemProperty("junit.jupiter.execution.parallel.mode.default", "concurrent")
+                        systemProperty("junit.jupiter.execution.parallel.mode.classes.default", "same_thread")
                         shouldRunAfter(tasks.named("UT"))
                     }
                 }
@@ -65,10 +73,12 @@ testing {
     }
 }
 
+// Run IT when running `check`
 tasks.named("check") {
     dependsOn += testing.suites.named("IT")
 }
 
+// Create UT task alias (do nothing other than running test
 task("UT") {
     group = "verification"
     description = "Run the ut suite."
