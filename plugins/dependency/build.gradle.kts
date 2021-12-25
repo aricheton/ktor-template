@@ -15,7 +15,6 @@ gradlePlugin {
     plugins {
         create("dependency") {
             id = "dependency"
-            description = "Cross module project dependency references"
             implementationClass = "me.aricheton.gradle.plugin.DependencyPlugin"
         }
     }
