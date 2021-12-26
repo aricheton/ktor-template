@@ -15,7 +15,13 @@ Gradle tasks:
 ```
 
 ## Usage
-TODO:
-- [ ] Gradle tasks
-- [ ] Project architecture (hexagonal)
-- [ ] Gradle plugins
+
+## TODO
+- [x] Create logging plugin
+- [x] Create dagger plugin
+- [ ] Bootstrap Ktor
+- [ ] Dependency Injection?
+- [ ] Document
+  - [ ] Gradle tasks
+  - [ ] Project architecture (hexagonal)
+  - [ ] Gradle plugins

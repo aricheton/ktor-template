@@ -17,11 +17,17 @@ object Dependencies {
         const val classic = "ch.qos.logback:logback-classic:${Versions.logback}"
     }
 
+    object Dagger {
+        const val core = "com.google.dagger:dagger:${Versions.kapt}"
+        const val kapt = "com.google.dagger:dagger-compiler:${Versions.kapt}"
+    }
+
     object Versions {
         const val arrow = "1.0.1"
         const val kotlin = "1.6.10"
         const val klint = "10.2.0"
         const val java = "17"
         const val logback = "1.2.10"
+        const val kapt = "2.40.5"
     }
 }

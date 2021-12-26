@@ -1,6 +1,7 @@
 plugins {
     id("dependency")
     id("template.kotlin.project")
+    id("module.dagger")
     application
 }
 
